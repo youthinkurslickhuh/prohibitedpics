@@ -1,0 +1,55 @@
+body {
+    font-family: "IBM Plex Mono", monospace;
+    zoom:200%;
+}
+
+.login-form {
+position: absolute;
+top: 45%;
+left: 50%; 
+transform: translate(-50%, -50%);
+display: grid;
+}
+
+label[type="email"] {
+    font-family: "IBM Plex Mono", monospace;
+}
+
+input[type="email"] {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 16px;
+    border-radius:0px;
+    border: 0px solid black;
+    outline:none;
+    border-bottom: 1px solid black;
+}
+
+input[type="email"]:focus {
+    outline: none;
+
+}
+.submit-button {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 700;
+    display:block;
+    margin: 0 auto;
+    padding:8px;
+    background: white;
+    border: 2px solid black;
+
+    
+}
+    .submit-button:hover {
+    background: rgb(250, 238, 238);
+    cursor: crosshair;
+  
+}
+
+.submit-button:active {
+    background: white;
+    cursor: crosshair;
+    transform: scale(0.98);
+}
+h2{
+    text-align: center;
+}
