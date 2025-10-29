@@ -67,3 +67,13 @@ h2{
 .login {
  font-size:16px;
 }
+
+.no-format-link {
+color: black;
+text-decoration:none;
+}
+
+.no-format-link:hover {
+transform: scale(0.98);
+text-decoration: underline;    
+}
