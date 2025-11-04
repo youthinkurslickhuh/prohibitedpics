@@ -46,6 +46,7 @@ input[type="password"]:focus {
     padding:8px;
     background: white;
     border: 2px solid black;
+    margin-top: 16px;
 
     
 }
@@ -77,5 +78,6 @@ text-decoration:none;
 transform: scale(0.98);
 text-decoration: underline;    
 }
+
 
 
