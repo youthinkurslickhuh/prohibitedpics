@@ -2,39 +2,31 @@ body {
     font-family: "IBM Plex Mono", monospace;
    
 }
-@media (max-width: 600px) {
-    body {
-        zoom: 100%;
-    }
-}
 
-@media (min-width: 601px) {
-    body {
-        zoom: 150%;
-    }
-}
 .login-form {
 position: absolute;
 top: 45%;
 left: 50%; 
 transform: translate(-50%, -50%);
 display: grid;
+font-size:32px;
 }
 
-label[type="password"] {
+label[type="email"] {
     font-family: "IBM Plex Mono", monospace;
 }
 
-input[type="password"] {
+input[type="email"] {
     font-family: "IBM Plex Mono", monospace;
     font-size: 16px;
     border-radius:0px;
     border: 0px solid black;
     outline:none;
     border-bottom: 1px solid black;
+    align-self: center;
 }
 
-input[type="password"]:focus {
+input[type="email"]:focus {
     outline: none;
 
 }
@@ -44,10 +36,13 @@ input[type="password"]:focus {
     display:block;
     margin: 0 auto;
     padding:8px;
-    background: white;
-    border: 2px solid black;
-    margin-top: 16px;
-
+    animation-name: buttonAnimation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    box-shadow:  0px 2px 26px inherit;
+    border: 0px solid black;
+    border-radius: 8px;
+    color:white;
     
 }
     .submit-button:hover {
@@ -65,19 +60,16 @@ h2{
     text-align: center;
 }
 
-.login {
- font-size:16px;
+@keyframes buttonAnimation {
+    0% {background-color: #1c244d; box-shadow: 0px 2px 26px #1c244d;}
+    10% {background-color: #353f7f; box-shadow: 0px 2px 26px #353f7f;}
+    20% {background-color: #172063; box-shadow: 0px 2px 26px #172063;}
+    30% {background-color: #010820; box-shadow: 0px 2px 26px #010820;}
+    40% {background-color: #02220a; box-shadow: 0px 2px 26px #02220a;}
+    50% {background-color: #0a490e; box-shadow: 0px 2px 26px #0a490e;}
+    60% {background-color: #02220a; box-shadow: 0px 2px 26px #02220a;}
+    70% {background-color: #010820; box-shadow: 0px 2px 26px #010820;}
+    80% {background-color: #172063; box-shadow: 0px 2px 26px #172063;}
+    90% {background-color: #353f7f; box-shadow: 0px 2px 26px #353f7f;}
+    100% {background-color: #1c244d; box-shadow: 0px 2px 26px #1c244d;}
 }
-
-.no-format-link {
-color: black;
-text-decoration:none;
-}
-
-.no-format-link:hover {
-transform: scale(0.98);
-text-decoration: underline;    
-}
-
-
-

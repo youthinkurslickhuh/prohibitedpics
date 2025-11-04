@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       
+       
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* container for the icon and filename (stays on the left) */
+        .file-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 0 1 auto; /* don't stretch; keeps action icon push working */
+        }
+
+        /* indent files that are inside a folder for visual hierarchy */
+        .folder > .file-list {
+            padding-left: 28px;
+        }
+
+        /* ensure the action anchor (download) is pushed to the right */
+        .file-item > .action-link {
+            margin-left: auto;
+            display: block;
+        }
+
+        /* make file names look like plain text but clickable */
+        .file-link {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .file-link:hover {
+            text-decoration: underline;
+        }
+
+        /* replace the button with an image action aligned to the right */
+        .action-img {
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+        }
+
+        .file-icon {
+            width: 32px;
+            height: 32px;
+            
+        }
+
+        .file-name {
+            font-size: 15px;
+            color: #222;
+        }
+
+        .file-name:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>FILES</h1>
+    <!-- warning banner shown when opened via file:// (fetch won't work) -->
+    <div id="server-warning" style="display:none;background:#fff3cd;border:1px solid #ffeeba;padding:10px;margin:10px 0;border-radius:4px;color:#7a5200;font-size:14px;">
+        Files and zipping may not work when opening this page directly from the filesystem (file://).
+        Serve this folder with a local static server. From PowerShell you can run:
+        <pre style="margin:6px 0;padding:6px;background:#fff;border-radius:3px;">python -m http.server 8000</pre>
+        or if you have Node installed:
+        <pre style="margin:6px 0;padding:6px;background:#fff;border-radius:3px;">npx http-server . -p 8000</pre>
+        Then open http://localhost:8000/protected.html in your browser.
+    </div>
+    <!-- Folder: LL Videos (files from /files/) -->
+    <details class="folder">
+        <summary class="file-item">
+            <div class="file-left">
+                <img class="file-icon" src="https://img.icons8.com/?size=100&id=3163&format=png&color=000000" alt="Folder Icon">
+                <span class="file-name">LL Videos</span>
+            </div>
+            <!-- folder-level download button (zips the files client-side) -->
+            <button class="action-link folder-download" data-folder="LL Videos" title="Download folder">
+                <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download folder">
+            </button>
+        </summary>
+        <ul class="file-list">
+            <li class="file-item">
+                <div class="file-left">
+                        <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                        <a class="file-link file-name" data-filename="Are You Smarter Than A 5th Grader？ (Gilson Teachers Edition) [CRV2QkpV1Ok].mp4">Are You Smarter Than A 5th Grader？ (Gilson Teachers Edition) [CRV2QkpV1Ok].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Are You Smarter Than A 5th Grader？ (Gilson Teachers Edition) [CRV2QkpV1Ok].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Class of 2019 - 'Friends' Intro [Yg7_A0P0Nkg].mp4">Class of 2019 - 'Friends' Intro [Yg7_A0P0Nkg].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Class of 2019 - 'Friends' Intro [Yg7_A0P0Nkg].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Class of 2019 - 'Modern Family' Intro [0WQLE97L-7c].mp4">Class of 2019 - 'Modern Family' Intro [0WQLE97L-7c].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Class of 2019 - 'Modern Family' Intro [0WQLE97L-7c].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Class of 2019 - Carpool Karaoke [RXDjwGgUJ8Q].mp4">Class of 2019 - Carpool Karaoke [RXDjwGgUJ8Q].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Class of 2019 - Carpool Karaoke [RXDjwGgUJ8Q].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Class of 2019 - Final Memories [HmtDOnm72Fw].mp4">Class of 2019 - Final Memories [HmtDOnm72Fw].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Class of 2019 - Final Memories [HmtDOnm72Fw].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Class of 2019 - Vines⧸TikTok Recreations [MGexzmPKPzE].mp4">Class of 2019 - Vines⧸TikTok Recreations [MGexzmPKPzE].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Class of 2019 - Vines⧸TikTok Recreations [MGexzmPKPzE].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Class of 2019 Endgame - ＂The Fallen＂ [TDszBy-Kg-w].mp4">Class of 2019 Endgame - ＂The Fallen＂ [TDszBy-Kg-w].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Class of 2019 Endgame - ＂The Fallen＂ [TDszBy-Kg-w].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Final Assembly - Gilson College Class of 2019 [UIXRv00xyIo].mp4">Final Assembly - Gilson College Class of 2019 [UIXRv00xyIo].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Final Assembly - Gilson College Class of 2019 [UIXRv00xyIo].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Gilson Kingz - Religious Men. (Official Music Video) [fk-9gZ8_YWw].mp4">Gilson Kingz - Religious Men. (Official Music Video) [fk-9gZ8_YWw].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Gilson Kingz - Religious Men. (Official Music Video) [fk-9gZ8_YWw].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Graduation Video [Kw4K-bX5EwM].mp4">Graduation Video [Kw4K-bX5EwM].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Graduation Video [Kw4K-bX5EwM].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+            <li class="file-item">
+                <div class="file-left">
+                    <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Video Icon">
+                    <a class="file-link file-name" data-filename="Mean Tweets (Teachers Edition) [wDXA_r-rdlo].mp4">Mean Tweets (Teachers Edition) [wDXA_r-rdlo].mp4</a>
+                </div>
+                <a class="action-link" data-filename="Mean Tweets (Teachers Edition) [wDXA_r-rdlo].mp4">
+                    <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+                </a>
+            </li>
+        </ul>
+    </details>
+
+    <ul class="file-list">
+        <li class="file-item">
+            <div class="file-left">
+                <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Document Icon">
+                <a class="file-link file-name" data-filename="document.pdf">document.pdf</a>
+            </div>
+            <a class="action-link" data-filename="document.pdf">
+                <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+            </a>
+        </li>
+        <li class="file-item">
+            <div class="file-left">
+                <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Image Icon">
+                <a class="file-link file-name" data-filename="image.jpg">image.jpg</a>
+            </div>
+            <a class="action-link" data-filename="image.jpg">
+                <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+            </a>
+        </li>
+        <li class="file-item">
+            <div class="file-left">
+                <img class="file-icon" src="https://img.icons8.com/?size=100&id=3131&format=png&color=000000" alt="Spreadsheet Icon">
+                <a class="file-link file-name" data-filename="spreadsheet.xlsx">spreadsheet.xlsx</a>
+            </div>
+            <a class="action-link" data-filename="spreadsheet.xlsx">
+                <img class="action-img" src="https://img.icons8.com/material-rounded/24/000000/download.png" alt="Download">
+            </a>
+        </li>
+    </ul>
+</body>
+    <!-- JS: set hrefs with encoded filenames and implement folder ZIP download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // set href + download on any element with data-filename
+            document.querySelectorAll('[data-filename]').forEach(el => {
+                const fname = el.getAttribute('data-filename');
+                try {
+                    // encode each path segment; using encodeURIComponent keeps folder path intact
+                    const href = 'files/' + encodeURIComponent(fname);
+                    el.setAttribute('href', href);
+                    el.setAttribute('download', '');
+                } catch (err) {
+                    console.error('Failed to set href for', fname, err);
+                }
+            });
+
+            // make clicking the .file-link also trigger the download for elements
+            document.querySelectorAll('.file-link').forEach(a => {
+                a.addEventListener('click', (e) => {
+                    // href and download already set above; default anchor behaviour will download
+                });
+            });
+
+            // folder-level download: zip files client-side
+            document.querySelectorAll('.folder-download').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    // if opened via file://, fetching will likely fail - show warning
+                    if (location.protocol === 'file:') {
+                        alert('Zipping requires running this page from a local web server. See the yellow banner for instructions.');
+                        return;
+                    }
+                    const folder = btn.closest('details');
+                    if (!folder) return;
+                    const items = folder.querySelectorAll('[data-filename]');
+                    if (!items.length) return;
+                    const zip = new JSZip();
+                    // fetch each file and add to zip
+                    for (const it of items) {
+                        const fname = it.getAttribute('data-filename');
+                        const url = 'files/' + encodeURIComponent(fname);
+                        try {
+                            const res = await fetch(url);
+                            if (!res.ok) {
+                                console.warn('Failed to fetch', url, res.status);
+                                continue;
+                            }
+                            const blob = await res.blob();
+                            zip.file(fname, blob);
+                        } catch (err) {
+                            console.error('Error fetching file for zip', url, err);
+                        }
+                    }
+                    try {
+                        const content = await zip.generateAsync({ type: 'blob' });
+                        const zname = (btn.getAttribute('data-folder') || 'download') + '.zip';
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(content);
+                        link.download = zname;
+                        document.body.appendChild(link);
+                        link.click();
+                        link.remove();
+                    } catch (err) {
+                        console.error('Failed to generate zip', err);
+                        alert('Failed to create zip: ' + (err && err.message));
+                    }
+                });
+            });
+        });
+    </script>
+</html>
