@@ -11,23 +11,37 @@
     <header><p class="login" style="text-align:right;">LOG IN</p></header>
     <div class="login-form">
         <h1 style="font-weight: bold; margin-bottom:0px;">PROHIBITED PICS</h1>
-        <h2>REQUEST ACCESS</h2>
-        <form action="https://formsubmit.co/e852f583e927c8f2c1f9c3d47442c8b2" method="post">
-            <input type="hidden" name="_next" value="https://prohibited.pics/request.html">
-            <input type="hidden" name="_captcha" value="false">
-            <label for="email" aria-label="Email">Email:</label>
-            <input type="hidden" name="_next" value="https://prohibited.pics/request.html">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="email" id="email" name="email" required><br><br>
-            <input type="hidden" name="_next" value="https://prohibited.pics/request.html"> 
-            <input type="hidden" name="_captcha" value="false">
-            <button type="submit" class="submit-button">SUBMIT</button>
-            <input type="hidden" name="_next" value="https://prohibited.pics/request.html"> 
-            <input type="hidden" name="_captcha" value="false">
-        </form>
+        <h2>ENTER PASSWORD</h2>
+        <input id="pw" type="password" placeholder="password">
+        <button id="btn">LOG IN</button>
+        <p id="msg"></p>
+        <script>
+   
+    const MASTER_HASH = "b29bef598262bdc5c8d8442f1c9752703156509351f3acb46768a72b58ec16b1";
+
+    async function sha256hex(str) {
+      const enc = new TextEncoder();
+      const data = enc.encode(str);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    document.getElementById("btn").addEventListener("click", async () => {
+      const v = document.getElementById("pw").value || "";
+      const h = await sha256hex(v);
+      if (h === MASTER_HASH) {
+        sessionStorage.setItem("logged_in_master", "1");
+        location.href = "protected.html";
+      } else {
+        document.getElementById("msg").textContent = "Wrong password.";
+      }
+    });
+  </script>
     </div>
 </body>
 </html>
+
 
 
 
