@@ -43,6 +43,7 @@ input[type="email"]:focus {
     border: 0px solid black;
     border-radius: 8px;
     color:white;
+    margin-top:16px;
     
 }
     .submit-button:hover {
@@ -72,4 +73,5 @@ h2{
     80% {background-color: #172063; box-shadow: 0px 2px 26px #172063;}
     90% {background-color: #353f7f; box-shadow: 0px 2px 26px #353f7f;}
     100% {background-color: #1c244d; box-shadow: 0px 2px 26px #1c244d;}
+
 }
