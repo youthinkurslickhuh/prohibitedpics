@@ -14,7 +14,7 @@
         <h2>ENTER PASSWORD</h2>
         <input id="pw" type="password">
         <button class="submit-button" id="btn">LOG IN</button>
-        <p id="msg"></p>
+        <p style="text-align:center;" id="msg"></p>
         <script>
    
     const MASTER_HASH = "b29bef598262bdc5c8d8442f1c9752703156509351f3acb46768a72b58ec16b1";
@@ -34,13 +34,14 @@
         sessionStorage.setItem("logged_in_master", "1");
         location.href = "protected.html";
       } else {
-        document.getElementById("msg").textContent = "Wrong password.";
+        document.getElementById("msg").textContent = "INCORRECT PASSWORD";
       }
     });
   </script>
     </div>
 </body>
 </html>
+
 
 
 
