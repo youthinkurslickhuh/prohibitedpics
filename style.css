@@ -62,16 +62,9 @@ h2{
 }
 
 @keyframes buttonAnimation {
-    0% {background-color: #1c244d; box-shadow: 0px 2px 26px #1c244d;}
-    10% {background-color: #353f7f; box-shadow: 0px 2px 26px #353f7f;}
-    20% {background-color: #172063; box-shadow: 0px 2px 26px #172063;}
-    30% {background-color: #010820; box-shadow: 0px 2px 26px #010820;}
-    40% {background-color: #02220a; box-shadow: 0px 2px 26px #02220a;}
-    50% {background-color: #0a490e; box-shadow: 0px 2px 26px #0a490e;}
-    60% {background-color: #02220a; box-shadow: 0px 2px 26px #02220a;}
-    70% {background-color: #010820; box-shadow: 0px 2px 26px #010820;}
-    80% {background-color: #172063; box-shadow: 0px 2px 26px #172063;}
-    90% {background-color: #353f7f; box-shadow: 0px 2px 26px #353f7f;}
-    100% {background-color: #1c244d; box-shadow: 0px 2px 26px #1c244d;}
+    0% {background-color: #ffffff; box-shadow: 0px 2px 26px #fff; color: #000000;}
+    50% {background-color: #808080; box-shadow: 0px 2px 26px #808080;}
+    100% {background-color: #000000; box-shadow: 0px 2px 26px #000000; color: #ffffff}
 
 }
+
