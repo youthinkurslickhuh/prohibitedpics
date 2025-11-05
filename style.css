@@ -63,8 +63,11 @@ h2{
 
 @keyframes buttonAnimation {
     0% {background-color: #ffffff; box-shadow: 0px 2px 26px #fff; color: #000000;}
-    50% {background-color: #808080; box-shadow: 0px 2px 26px #808080;}
-    100% {background-color: #000000; box-shadow: 0px 2px 26px #000000; color: #ffffff}
+    25% {background-color: #808080; box-shadow: 0px 2px 26px #808080;}
+    50% {background-color: #000000; box-shadow: 0px 2px 26px #000000; color: #ffffff}
+    75% {background-color: #808080; box-shadow: 0px 2px 26px #808080; color:#000;}
+    100% {background-color: #ffffff; box-shadow: 0px 2px 26px #fff; color: #000000;}
 
 }
+
 
