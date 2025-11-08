@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROHIBITED</title>
+    <title>TEST</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -41,6 +41,64 @@
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <header><p class="login" style="text-align:right;">LOG IN</p></header>
+    <div class="login-form">
+        <h1 style="font-weight: bold; margin-bottom:0px;">PROHIBITED PICS</h1>
+        <h2>ENTER PASSWORD</h2>
+        <input id="pw" type="password">
+        <button class="submit-button" id="btn">LOG IN</button>
+        <p style="text-align:center;" id="msg"></p>
+        <script>
+   
+    const MASTER_HASH = "b29bef598262bdc5c8d8442f1c9752703156509351f3acb46768a72b58ec16b1";
+
+    async function sha256hex(str) {
+      const enc = new TextEncoder();
+      const data = enc.encode(str);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    document.getElementById("btn").addEventListener("click", async () => {
+      const v = document.getElementById("pw").value || "";
+      const h = await sha256hex(v);
+      if (h === MASTER_HASH) {
+        sessionStorage.setItem("logged_in_master", "1");
+        location.href = "protected.html";
+      } else {
+        document.getElementById("msg").textContent = "INCORRECT PASSWORD";
+      }
+    });
+  </script>
+    </div>
+</body>
+</html>
+
 
 
 
