@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROHIB PICS</title>
+    <title>PROHIBITED PICS</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header><p class="login" style="text-align:right;">LOG IN</p></header>
     <div class="login-form">
         <h1 style="font-weight: bold; margin-bottom:0px;">PROHIBITED PICS</h1>
         <h2>ENTER PASSWORD</h2>
-        <input id="pw" type="password">
+        <div class="password-enter">
+          <input class="password-field" id="pw" type="password">
+          <button type="button" id="showPassword" class="show-password"><img class="eye" width="16px" src="https://img.icons8.com/?size=100&id=85329&format=png&color=000000"></button>
+</div>
         <button class="submit-button" id="btn">LOG IN</button>
         <p style="text-align:center;" id="msg"></p>
         <script>
